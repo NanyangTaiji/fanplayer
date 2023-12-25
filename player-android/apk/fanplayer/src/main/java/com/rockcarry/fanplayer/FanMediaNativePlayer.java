@@ -7,7 +7,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 
-public final class MediaPlayer
+public final class FanMediaNativePlayer
 {
     public static final int MSG_OPEN_DONE           = (('O' << 24) | ('P' << 16) | ('E' << 8) | ('N' << 0));
     public static final int MSG_OPEN_FAILED         = (('F' << 24) | ('A' << 16) | ('I' << 8) | ('L' << 0));
@@ -29,10 +29,10 @@ public final class MediaPlayer
     public static final int PARAM_AVSYNC_TIME_DIFF  = 0x1000 + 8;
 //  public static final int PARAM_PLAYER_CALLBACK   = 0x1000 + 9;
 
-    public MediaPlayer() {
+    public FanMediaNativePlayer() {
     }
 
-    public MediaPlayer(String url, Handler h, String params) {
+    public FanMediaNativePlayer(String url, Handler h, String params) {
         mPlayerMsgHandler = h;
         open(url, params);
     }
@@ -71,8 +71,8 @@ public final class MediaPlayer
     }
 
     public boolean initVideoSize(int rw, int rh, View v) {
-        int vw = (int)getParam(MediaPlayer.PARAM_VIDEO_WIDTH ); // video width
-        int vh = (int)getParam(MediaPlayer.PARAM_VIDEO_HEIGHT); // video height
+        int vw = (int)getParam(FanMediaNativePlayer.PARAM_VIDEO_WIDTH ); // video width
+        int vh = (int)getParam(FanMediaNativePlayer.PARAM_VIDEO_HEIGHT); // video height
         if (rw <= 0 || rh <= 0 || vw <= 0 || vh <= 0 || v == null) return false;
 
         int sw, sh; // scale width & height
